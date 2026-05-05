@@ -487,6 +487,61 @@ public class Main {
 
 
 
+        System.out.println("================================");
+        System.out.println("Match a date and divide it into day, month, and year.");
+        System.out.println("================================");
+        String dateText = "Today is 05-05-2026.";
+        Pattern datePattern = Pattern.compile("(\\d{2})-(\\d{2})-(\\d{4})");
+        Matcher dateMatcher = datePattern.matcher(dateText);
+        if (dateMatcher.find()) {
+            System.out.println("(group 0): " + dateMatcher.group(0));
+            System.out.println("Day (group 1): " + dateMatcher.group(1));
+            System.out.println("Month (group 2): " + dateMatcher.group(2));
+            System.out.println("Year (group 3): " + dateMatcher.group(3));
+        }
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an email address and extract the username and domain.");
+        System.out.println("================================");
+        String emailText = "Kontakt: jan.kowalski@gmail.com";
+        Pattern emailPattern = Pattern.compile("\\s([\\w].+)@([\\w].+)");
+        Matcher emailMatcher = emailPattern.matcher(emailText);
+        if (emailMatcher.find()) {
+            System.out.println("(group 0): " + emailMatcher.group(0));
+            System.out.println("Day (group 1): " + emailMatcher.group(1));
+            System.out.println("Month (group 2): " + emailMatcher.group(2));
+        }
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an phone address and extract the username and domain.");
+        System.out.println("================================");
+        String phoneText = "Call me +48987654321.";
+        Pattern phonePattern = Pattern.compile("(\\+\\d{2})(\\d{9})");
+        Matcher phoneMatcher = phonePattern.matcher(phoneText);
+        if (phoneMatcher.find()) {
+            System.out.println("(group 0): " + phoneMatcher.group(0));
+            System.out.println("Country (group 1): " + phoneMatcher.group(1));
+            System.out.println("Phone (group 2): " + phoneMatcher.group(2));
+        }
+
+        int i = Integer.parseInt(phoneMatcher.group(2));
+        System.out.println("XD: " + 2*i);
+
+
+
+
+
+
+
+
+
+
+
     }
     private static void testRegex(String regex, String input, String description) {
         // The matches() method checks if the ENTIRE input string matches the regex pattern
