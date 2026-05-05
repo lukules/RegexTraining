@@ -345,8 +345,143 @@ public class Main {
 
         testRegex("[^0-9]+", "1234a", "NUMBER");
         testRegex("[^0-9]+", "abcd", "NO NUMBER");
-        testRegex("^\\d+", "1234a", "NUMBER");
-        testRegex("^\\d+", "abcd", "NO NUMBER");
+
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match text that begins with a specific letter.");
+        System.out.println("================================");
+        Pattern pattern14 = Pattern.compile("^B.*", Pattern.CASE_INSENSITIVE);
+        String text14 = "a ab abc bbcd bbcde adf acb abc bca cba abg";
+        String[] splitText14 = text14.split("\\s+");
+
+        for (String s : splitText14) {
+            Matcher forMatcher14 = pattern14.matcher(s);
+
+            if (forMatcher14.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text14Empty = "";
+        Matcher emptyMatcher14 = pattern14.matcher(text14Empty);
+        if (emptyMatcher14.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text14Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text14Empty);
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match text that ends with a specific character.");
+        System.out.println("================================");
+        Pattern pattern15 = Pattern.compile(".*c$");
+        String text15 = "a ab abc bcb bbc ccb bcc ccc abcd abcde adf acb abcc bcac cba abg";
+        String[] splitText15 = text15.split("\\s+");
+
+        for (String s : splitText15) {
+            Matcher forMatcher15 = pattern15.matcher(s);
+
+            if (forMatcher15.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text15Empty = "";
+        Matcher emptyMatcher15 = pattern15.matcher(text15Empty);
+        if (emptyMatcher15.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text15Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text15Empty);
+
+
+
+
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Check if the entire string exactly matches the given pattern.");
+        System.out.println("================================");
+        Pattern pattern16 = Pattern.compile("^abc$");
+        String text16 = "a ab abc abcd abcde adf acb abc bca cba abg";
+        String[] splitText16 = text16.split("\\s+");
+
+        for (String s : splitText16) {
+            Matcher forMatcher16 = pattern16.matcher(s);
+
+            if (forMatcher16.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text16Empty = "";
+        Matcher emptyMatcher16 = pattern16.matcher(text16Empty);
+        if (emptyMatcher16.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text16Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text16Empty);
+
+
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an entire word, but not a fragment of a larger word.");
+        System.out.println("================================");
+        Pattern pattern17 = Pattern.compile("\\bdog\\b");
+        String text17 = "hotdog dog dogfight";
+        String[] splitText17 = text17.split("\\s+");
+
+        for (String s : splitText17) {
+            Matcher forMatcher17 = pattern17.matcher(s);
+
+            if (forMatcher17.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text17Empty = "";
+        Matcher emptyMatcher17 = pattern17.matcher(text17Empty);
+        if (emptyMatcher17.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text17Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text17Empty);
+
+
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an entire word, but not a fragment of a larger word.");
+        System.out.println("================================");
+        Pattern pattern18 = Pattern.compile("\\Bdog\\b");
+        String text18 = "hotdog dog dogfight";
+        String[] splitText18 = text18.split("\\s+");
+
+        for (String s : splitText18) {
+            Matcher forMatcher18 = pattern18.matcher(s);
+
+            if (forMatcher18.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text18Empty = "";
+        Matcher emptyMatcher18 = pattern18.matcher(text18Empty);
+        if (emptyMatcher18.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text18Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text18Empty);
 
 
 
