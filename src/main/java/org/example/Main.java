@@ -179,7 +179,7 @@ public class Main {
 
 
         System.out.println("================================");
-        System.out.println("Match a word with exactly n repetitions of the selected character.");
+        System.out.println("Match a word with exactly n-d repetitions of the selected character.");
         System.out.println("================================");
         Pattern pattern8 = Pattern.compile("a{2,4}");
         String text8 = "a aa aaa aaaa aaaaa aaaaaaa";
@@ -205,5 +205,162 @@ public class Main {
 
 
 
+        System.out.println("================================");
+        System.out.println("Match a string composed only of the letters a, b, and c.");
+        System.out.println("================================");
+        Pattern pattern9 = Pattern.compile("[abc]+");
+        String text9 = "a ab abc abcd abcde adf acb abc bca cba abg";
+        String[] splitText9 = text9.split("\\s+");
+
+        for (String s : splitText9) {
+            Matcher forMatcher9 = pattern9.matcher(s);
+
+            if (forMatcher9.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text9Empty = "";
+        Matcher emptyMatcher9 = pattern9.matcher(text9Empty);
+        if (emptyMatcher9.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text9Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text9Empty);
+
+
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match any lowercase letter from a-z.");
+        System.out.println("================================");
+        Pattern pattern10 = Pattern.compile("[a-z]");
+        String text10 = "a b c d e f gh a cfg asf as bb b";
+        String[] splitText10 = text10.split("\\s+");
+
+        for (String s : splitText10) {
+            Matcher forMatcher10 = pattern10.matcher(s);
+
+            if (forMatcher10.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text10Empty = "";
+        Matcher emptyMatcher10 = pattern10.matcher(text10Empty);
+        if (emptyMatcher10.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text10Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text10Empty);
+
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match any character that is not a, b, or c.");
+        System.out.println("================================");
+        Pattern pattern11 = Pattern.compile("[^abc]");
+        String text11 = "a ab bca cba abg hj ih i v d g a b h";
+        String[] splitText11 = text11.split("\\s+");
+
+        for (String s : splitText11) {
+            Matcher forMatcher11 = pattern11.matcher(s);
+
+            if (forMatcher11.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text11Empty = "";
+        Matcher emptyMatcher11 = pattern11.matcher(text11Empty);
+        if (emptyMatcher11.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text11Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text11Empty);
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an integer");
+        System.out.println("================================");
+        Pattern pattern12 = Pattern.compile("-?\\d+");
+        String text12 = "9 10 2 4 5 13 421 -9 -900";
+        String[] splitText12 = text12.split("\\s+");
+
+        for (String s : splitText12) {
+            Matcher forMatcher12 = pattern12.matcher(s);
+
+            if (forMatcher12.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text12Empty = "";
+        Matcher emptyMatcher12 = pattern12.matcher(text12Empty);
+        if (emptyMatcher12.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text12Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text12Empty);
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match an identifier composed of letters, digits, and underscores");
+        System.out.println("================================");
+        Pattern pattern13 = Pattern.compile("\\w+");
+        String text13 = "a ab abc ab2 ah65 hg2344 23vb a_2 *@#^ ABC!@ ABC!";
+        String[] splitText13 = text13.split("\\s+");
+
+        for (String s : splitText13) {
+            Matcher forMatcher13 = pattern13.matcher(s);
+
+            if (forMatcher13.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text13Empty = "";
+        Matcher emptyMatcher13 = pattern13.matcher(text13Empty);
+        if (emptyMatcher13.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text13Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text13Empty);
+
+
+        System.out.println("================================");
+        System.out.println("Match a fragment containing whitespace");
+        System.out.println("================================");
+
+        testRegex(".*\\s+.*", "Hello World", "SPACE");
+        testRegex(".*\\s+.*", "HelloWorld", "NO SPACE");
+
+        testRegex("", "", "");
+        testRegex("", "", "");
+
+        System.out.println("================================");
+        System.out.println("Match a string containing only non-digit characters");
+        System.out.println("================================");
+
+        testRegex("[^0-9]+", "1234a", "NUMBER");
+        testRegex("[^0-9]+", "abcd", "NO NUMBER");
+        testRegex("^\\d+", "1234a", "NUMBER");
+        testRegex("^\\d+", "abcd", "NO NUMBER");
+
+
+
+
+
+    }
+    private static void testRegex(String regex, String input, String description) {
+        // The matches() method checks if the ENTIRE input string matches the regex pattern
+        boolean isMatch = Pattern.matches(regex, input);
+
+        System.out.printf("[ %-6s ] Pattern: %-10s | Text: %-13s | Goal: %s%n",
+                isMatch ? "MATCH" : "FAIL",
+                regex,
+                "\"" + input + "\"",
+                description);
     }
 }
