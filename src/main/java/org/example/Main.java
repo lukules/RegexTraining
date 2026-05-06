@@ -534,7 +534,41 @@ public class Main {
 
 
 
+        System.out.println("================================");
+        System.out.println("Match text regardless of case.");
+        System.out.println("================================");
+        Pattern pattern19 = Pattern.compile("aa", Pattern.CASE_INSENSITIVE);
+        String text19 = "aa AA aA Aa";
+        String[] splitText19 = text19.split("\\s+");
 
+        for (String s : splitText19) {
+            Matcher forMatcher19 = pattern19.matcher(s);
+
+            if (forMatcher19.matches()) {
+                System.out.println("Match found: " + s);
+            } else System.out.println("No match found: " + s);
+        }
+
+        String text19Empty = "";
+        Matcher emptyMatcher19 = pattern19.matcher(text19Empty);
+        if (emptyMatcher19.matches()) {
+            System.out.println("EMPTY 1 occur - Match found: " + text19Empty);
+        } else System.out.println("EMPTY 1 occur - No match found: " + text19Empty);
+
+
+
+
+
+        System.out.println("================================");
+        System.out.println("Match multiline text, where ^ and $ work for each line.");
+        System.out.println("================================");
+        String text20 = "text1\ntext2\ntext3 text4";
+
+        Pattern noMultiline = Pattern.compile("^text2$");
+        Pattern withMultiline = Pattern.compile("^text2$", Pattern.MULTILINE);
+
+        System.out.println("No flag:  " + noMultiline.matcher(text20).find());   // false
+        System.out.println("With Pattern.MULTILINE: " + withMultiline.matcher(text20).find());
 
 
 
